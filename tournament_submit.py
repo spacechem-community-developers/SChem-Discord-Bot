@@ -383,7 +383,6 @@ class TournamentSubmit(BaseTournament):
             # Call the SChem validator in a thread so the bot isn't blocked
             max_cycles = round_metadata['max_cycles'] if 'max_cycles' in round_metadata else self.DEFAULT_MAX_CYCLES
             loop = asyncio.get_event_loop()
-            await loop.run_in_executor(None, solution.validate, max_cycles)
             # Allow submissions to omit the expected score, in which case it will be calculated for them.
             # Required for computation puzzles. For now, Solution.validate will still be used in the case of an
             # expected score being provided so I can maintain the possibility of catching schem bugs
